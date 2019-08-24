@@ -4,7 +4,6 @@ using FormsBarebone.Droid;
 using Xamarin.Forms;
 using DT.Xamarin.Agora;
 
-[assembly: ExportRenderer(typeof(AgoraVideoCanvas), typeof(AgoraVideoCanvasRenderer))]
 [assembly: Dependency(typeof(AgoraEngine))]
 namespace FormsBarebone.Droid
 {
@@ -17,6 +16,7 @@ namespace FormsBarebone.Droid
         public event Action LeftChannelEvent;
         public event RemoteUserJoinedEventType RemoteUserJoinedChannelEvent;
         public event RemoteUserJoinedEventType RemoteUserLeftChannelEvent;
+        public event RemoteUserJoinedEventType FirstVideoDecodedEvent;
 
         public AgoraEngine()
         {
@@ -66,5 +66,16 @@ namespace FormsBarebone.Droid
             LeftChannelEvent?.Invoke();
         }
 
+        [Obsolete]
+        public override void OnFirstRemoteVideoDecoded(int uid, int width, int height, int elapsed)
+        {
+        }
+
+        public override void OnFirstRemoteVideoFrame(int uid, int width, int height, int elapsed)
+        {
+            Console.WriteLine($"First remote video decoded");
+            FirstVideoDecodedEvent?.Invoke(uid, elapsed);
+
+        }
     }
 }

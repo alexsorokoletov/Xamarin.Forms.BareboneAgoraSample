@@ -11,5 +11,6 @@ namespace FormsBarebone
         event Action LeftChannelEvent;
         event RemoteUserJoinedEventType RemoteUserJoinedChannelEvent;
         event RemoteUserJoinedEventType RemoteUserLeftChannelEvent;
+        event RemoteUserJoinedEventType FirstVideoDecodedEvent;        
     }
 }

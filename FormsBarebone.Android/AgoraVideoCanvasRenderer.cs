@@ -11,7 +11,6 @@ using Android.Views;
 using DT.Xamarin.Agora.Video;
 
 [assembly: ExportRenderer(typeof(AgoraVideoCanvas), typeof(AgoraVideoCanvasRenderer))]
-[assembly: Dependency(typeof(AgoraEngine))]
 namespace FormsBarebone.Droid
 {
     public class AgoraVideoCanvasRenderer : ViewRenderer<AgoraVideoCanvas, FrameLayout>
@@ -65,9 +64,10 @@ namespace FormsBarebone.Droid
                 {
                     var surfaceView = RtcEngine.CreateRendererView(DemoHelper.Context);
                     container.AddView(surfaceView);
-                    var videoCanvas = new VideoCanvas(surfaceView, Constants.RenderModeAdaptive, uid);
+                    var videoCanvas = new VideoCanvas(surfaceView, VideoCanvas.RenderModeHidden, uid);
                     var rtcEngine = DemoHelper.CurrentAgoraEngine.RtcEngine;
-                    rtcEngine.SetupRemoteVideo(videoCanvas);
+                    var result = rtcEngine.SetupRemoteVideo(videoCanvas);
+                    Console.WriteLine($"Set remote video result {result}");
                 }
             }
         }
