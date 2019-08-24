@@ -1,5 +1,4 @@
-﻿using System;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace FormsBarebone
 {
@@ -14,14 +13,4 @@ namespace FormsBarebone
         }
     }
 
-    public interface IAgoraEngine
-    {
-        void InitAndJoinChannel(string channel, string token, string appId);
-        event Action JoinedChannelEvent;
-        event Action LeftChannelEvent;
-        event RemoteUserJoinedEventType RemoteUserJoinedChannelEvent;
-        event RemoteUserJoinedEventType RemoteUserLeftChannelEvent;
-    }
-
-    public delegate void RemoteUserJoinedEventType(int uid, int elapsed);
 }

@@ -25,7 +25,7 @@ namespace FormsBarebone
         {
             const string appId = "";
             const string token = "";
-            const string channelName = "";
+            const string channelName = "    ";
             _agoraCoreEngine.JoinedChannelEvent += _agoraCoreEngine_JoinedChannelEvent;
             _agoraCoreEngine.LeftChannelEvent += _agoraCoreEngine_LeftChannelEvent;
             _agoraCoreEngine.RemoteUserJoinedChannelEvent += _agoraCoreEngine_RemoteUserJoinedChannelEvent;
